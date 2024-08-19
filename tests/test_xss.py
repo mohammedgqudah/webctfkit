@@ -22,7 +22,7 @@ def test_it_uses_the_configured_whitespace_in_as_img():
 
 def test_it_evals_a_base64_script():
     script = """alert(1)"""
-    assert "eval('" + base64.b64encode(script.encode()).decode() + "')" == webtools.xss.eval_base64(script)
+    assert "eval(atob('" + base64.b64encode(script.encode()).decode() + "'))" == webtools.xss.eval_base64(script)
 
 
 def test_it_generates_a_form_submit_script():

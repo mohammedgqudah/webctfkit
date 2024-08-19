@@ -13,7 +13,7 @@ def as_img(script: str, src: str = 'x'):
 
 def eval_base64(script: str):
     script_encoded = base64.b64encode(script.encode()).decode()
-    return f"eval('{script_encoded}')"
+    return f"eval(atob('{script_encoded}'))"
 
 def form_submit_script(url, form_data, method='POST'):
     """
